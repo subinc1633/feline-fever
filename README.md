@@ -2,14 +2,14 @@
 
 ## Background
 
-Feline Fever is a rhythm game that involves pressing the respective arrows on the screen. Our main character, **Felix the Cat**, wants to be the best dancer there ever was. To obtain points, the player must match the scrolling arrows with the stationary arrows at the center of the screen. The scores range from paw-full to purr-fect, and more points are awarded for purr-fect accuracy. Help Felix win his dance battle and beat the competition!
+Feline Fever is a rhythm game that involves pressing the respective arrows on the screen. Our main character, **Felix the Cat**, wants to be the best dancer there ever was. To obtain points, the player must match the scrolling arrows with the stationary arrows at the center of the screen. The scores range from *paw-full* to *purr-fect*, and more points are awarded for *purr-fect* accuracy. Help Felix win his dance battle and beat the competition!
 
 ## Functionality
 
 In Feline Fever, users will be able to:
 
 - Start, pause, and exit a game
-- Press arrow keys or WASD to match the arrows on the screen
+- Press **arrow keys** or **WASD** to match the arrows on the screen
 - Select a background
 
 In addition, this project will include:
@@ -52,5 +52,4 @@ This project will be implemented with:
 ## Bonus Features
 
 - Unlock a new outfit with each level
-- Background selection
 - Song selection
