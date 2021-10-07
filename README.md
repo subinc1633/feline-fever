@@ -2,7 +2,7 @@
 
 ## Background
 
-Feline Fever is a rhythm game that involves pressing the respective arrows on the screen. Our main character, **Felix the Cat**, wants to be the best dancer there ever was. To obtain points, the player must match the scrolling arrows with the stationary arrows at the center of the screen. The scores range from *paw-full* to *purr-fect*, and more points are awarded for *purr-fect* accuracy. Help Felix win his dance battle and beat the competition!
+Feline Fever is a rhythm game that involves pressing the respective arrows on the screen at the right time. Our main character, **Felix the Cat**, wants to be the best dancer there ever was. To obtain points, the player must match the scrolling arrows with the stationary arrows at the center of the screen. The scores range from *paw-full* to *purr-fect*, and more points are awarded for *purr-fect* accuracy. Help Felix win his dance battle and beat the competition!
 
 ## Functionality
 
