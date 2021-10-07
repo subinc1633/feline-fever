@@ -31,22 +31,22 @@ This project will be implemented with:
 
 ## Implementation
 
-** Fri-Sun 10/8/21 - 10/10/21 **
+**Fri-Sun 10/8/21 - 10/10/21**
 - Setup webpack and node modules
 - Build entry files / skeletons and review Canvas/DOM material
 - Draw character, background, arrows and add respective classes
 
-** Mon 10/11/21 **
+**Mon 10/11/21**
 - Set timing for collision detection between arrows
 - Set up grades and establish zones where the arrow's positioning 
 - Determine how many points to give for specific grades
 
-** Tue 10/12/21 **
+**Tue 10/12/21**
 - Add character animation
 - Increment player's score
 - Implement background and add background animation
 
-** Wed 10/12/21 **
+**Wed 10/12/21**
 - SCSS implementation, finishing any styling or editing any details
 
 ## Bonus Features
