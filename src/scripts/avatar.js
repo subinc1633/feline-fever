@@ -1,4 +1,4 @@
-class Arrow {
+class Felix {
     constructor() {
         
     }
