@@ -3,3 +3,9 @@ body {
     font: 20px Nunito Sans, Arial;
     font-weight: 200;
 }
+
+#canvas {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
