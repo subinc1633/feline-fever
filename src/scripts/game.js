@@ -1,17 +1,17 @@
 import Avatar from "./avatar.js";
 import Arrow from "./arrow.js";
+import Splash from "./splash.js"
 
-class Game {
+export default class Game {
     constructor() {
         this.arrow = [];
         this.avatar = [];
-        this.X_DIM = 900;
-        this.Y_DIM = 630;
-        this.BG_COLOR = ("#bf75be");
+        this.BG_COLOR = "#bf75be";
     }
 
     draw(ctx) {
-        ctx.fillStyle = this.BG_COLOR;
+        ctx.fillRect = (0, 0, 200, 400);
+        ctx.fillStyle = "#ffffff";
         ctx.fill();
     }
 
@@ -24,5 +24,13 @@ class Game {
 
     randomArrow() {
         let randomArrow = this.arrow[Math.floor(Math.random() * this.arrow.length)];
+    }
+
+    drawScore() {
+
+    }
+
+    checkCollision() {
+
     }
 }
