@@ -1,4 +1,4 @@
-class Felix {
+export default class Avatar {
     constructor() {
         
     }

@@ -1,0 +1,33 @@
+body {
+    background-color: #f3e3f8;
+    font: 20px Nunito Sans, Arial;
+    font-weight: 200;
+}
+/* f3e3f8 */
+
+section {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    width: 900px;
+}
+
+#instructions {
+    text-align: center;
+}
+
+#canvas {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: #bf75be; */
+}
+
+#github-logo {
+    position: absolute;
+    left:80%;
+}
