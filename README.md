@@ -27,7 +27,7 @@ This project will be implemented with:
 
 - Vanilla Javascript
 - HTML5, Canvas
-- SCSS
+- CSS
 
 ## Implementation
 
@@ -47,7 +47,7 @@ This project will be implemented with:
 - Implement background and add background animation
 
 **Wed | Day 6**
-- SCSS implementation, finishing any styling or editing any details
+- CSS implementation, finishing any styling or editing any details
 
 ## Bonus Features
 
