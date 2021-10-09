@@ -3,7 +3,6 @@ body {
     font: 20px Nunito Sans, Arial;
     font-weight: 200;
 }
-/* f3e3f8 */
 
 section {
     display: flex;
@@ -24,7 +23,7 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* background-color: #bf75be; */
+    border-radius: 2%;
 }
 
 #github-logo {

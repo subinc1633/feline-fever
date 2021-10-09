@@ -5,28 +5,22 @@ export default class Game {
     constructor() {
         this.arrow = [];
         this.avatar = [];
-        this.BG_COLOR = "#bf75be";
+        this.BG_COLOR = "#e6c7f0";
         this.DIM_X = 900;
-        this.DIM_X = 630;
+        this.DIM_Y = 630;
+        // this.leftArrow = leftArrow;
+        // this.rightArrow = rightArrow;
+        // this.upArrow = upArrow;
+        // this.downArrow = downArrow;
     }
 
     draw(ctx) {
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect = (0, 0, this.DIM_X, this.DIM_Y);
+        ctx.fillStyle = this.BG_COLOR;
+        ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
     }
 
-    createArrow() {
-        this.arrow.push(new LeftArrow());
-        this.arrow.push(new RightArrow());
-        this.arrow.push(new UpArrow());
-        this.arrow.push(new DownArrow());
-    }
-
-    addArrow() {
-        // const leftArrow = new LeftArrow();
-        // const upArrow = new UpArrow();
-        // const downArrow = new DownArrow();
-        // const rightArrow = new RightArrow();
+    createArrow(ctx) {
+        const newArrow = new Arrow();
     }
 
     randomArrow() {

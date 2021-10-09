@@ -1,31 +1,40 @@
 const PROPERTIES = {
     SIZE: 50,
-    SPEED: 2
+    SPEED: 5
 };
 
 export default class Arrow { 
-    constructor(ctx) {
+    constructor() {
         this.color = "#ffffff";
-        this.strokeColor = "#";
+        this.strokeColor = `rgb(
+            ${Math.floor(240 - 30 * i)},
+            0,
+            ${Math.floor(240 - 30 * j)})`
         this.size = PROPERTIES.SIZE;
         this.speed = PROPERTIES.SPEED;
-        this.ctx = ctx;
-
     }
 
     draw(ctx) {
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(300, 315, 5, 5);
+        ctx.fillStyle = this.color;
+        this.leftArrow = ctx.fillRect(300, 315, 100, 100);
+
         for (let i = 0; i < 8; i++) {
             for (let j = 0; j < 8; j++) {
-                ctx.strokeStyle = `rgb(
-                    ${Math.floor(240 - 30 * i)},
-                    0,
-                    ${Math.floor(240 - 30 * j)})`
-                ctx.stroke();
+                ctx.strokeStyle = this.strokeColor;
+                ctx.strokeRect(300, 315, 100, 100);
             }
         }
     }
+
+    newArrow(ctx, startX, startY, endX, endY) {
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+        ctx.closePath();
+    }
+
+
 
     
 }

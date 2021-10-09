@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.width = 900;
     canvas.height = 630;
     const ctx = canvas.getContext("2d");
-    // ctx.fillStyle = "#ecd8f1";
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
     const game = new Game();
     new GameView(game, ctx).run();
 });
