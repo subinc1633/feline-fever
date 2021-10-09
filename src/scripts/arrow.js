@@ -6,16 +6,17 @@ const PROPERTIES = {
 export default class Arrow { 
     constructor() {
         this.color = "#ffffff";
-        this.strokeColor = "#ed1851"
+        this.strokeColor = "#ed1851";
         this.size = PROPERTIES.SIZE;
         this.speed = PROPERTIES.SPEED;
+        this.leftArrow = function(ctx) {
+            const left = new Image();
+            left.onload = function() {
+                ctx.drawImage(left, 350, 500);
+            };
+            img.src = "../imgs/disco-ball.png"
+        }
     }
 
-    newArrow(ctx, startX, startY, endX, endY) {
-        ctx.beginPath();
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(endX, endY);
-        ctx.stroke();
-        ctx.closePath();
-    }
+    
 }
