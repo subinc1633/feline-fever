@@ -4,8 +4,8 @@ export default class Controls {
         this.ctx = ctx;
         this.width = width;
         this.height = height;
-        this.lastTime = 0;
-        this.animate(0)
+        this.prevTime = 0;
+        this.animate(0);
     }
 
     // KEYS = {
@@ -15,22 +15,26 @@ export default class Controls {
     //     d:
     // }
 
-    start() {
-        // this.keyBindings();
-        this.lastTime = 0;
-        requestAnimationFrame(this.animate.bind(this));
-    }
+    // have arrow flash when player presses 
     
-    keyBindings() {
-        
-    }
+    // keyBindings() {
+    //     this.canvas.addEventListener("keydown" , (e) => {
+    //          if event.code === ArrowUp => change img to selected-up.png
+    //          
+    //     });
+    // }
 
     animate(timeStamp) {
         this.ctx.clearRect(0, 0, this.width, this.height);
-        let deltaTime = timeStamp - this.lastTime;
-        this.lastTime = timeStamp;
-        this.game.update(this.ctx);
+        let deltaTime = timeStamp - this.prevTime;
+        this.prevTime = timeStamp;
+        this.game.update(deltaTime);
         this.game.draw(this.ctx);
         requestAnimationFrame(this.animate.bind(this));
     }
+
+    // audio() {
+    //     const AudioContext = window.AudioContext;
+    //     const audioContext = new AudioContext();
+    // }
 }

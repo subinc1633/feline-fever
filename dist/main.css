@@ -23,6 +23,8 @@ div {
 div a {
   color: #ffffff;
   text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 
 div a:hover {
@@ -37,4 +39,8 @@ div a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 2%;
+}
+
+img {
+  display: none;
 }

@@ -1,25 +1,35 @@
 import Avatar from "./avatar.js";
-import Arrow from "./arrows/arrow.js";
+import Arrow from "./arrow.js";
+import Song from "./song.js";
 
 export default class Game {
     constructor() {
         this.arrows = [];
+        this.randomArrows = [];
         this.avatar = [];
-        this.width = 900;
-        this.height = 630;
+        this.arrowInterval = 2000;
+        this.arrowTimer = 0;
         this.#addArrow();
+        // debugger
     }
 
     draw(ctx) {
-        for (let arrow of this.arrows) {
-            arrow.draw(ctx);
-        }
+        for (let rand of this.randomArrows) { rand.draw(ctx) };
     }
 
-    update(ctx) {
-        for (let arrow of this.arrows) {
-            arrow.move(ctx);
+    update(deltaTime) {
+        this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
+        console.log(this.randomArrows);
+        if (this.arrowTimer > this.arrowInterval) {
+            this.#addRandomArrows();
+            this.arrowTimer = 0;
+            console.log(this.randomArrows);
+        } else {
+            this.arrowTimer += deltaTime;
         }
+        
+        for (let rand of this.randomArrows) { rand.move() };
+        
     }
 
     #addAvatar() {
@@ -27,24 +37,29 @@ export default class Game {
     }
 
     #addArrow() {
-        let left = new Arrow(255, -100, "left");
-        let up = new Arrow(365, -100, "up");
-        let down = new Arrow(482, -100, "down");
-        let right = new Arrow(588, -100, "right");
+        let pos = {
+            left: 255,
+            up: 365,
+            down: 482,
+            right: 588
+        }
 
-        this.arrows.push(left, up, down, right);
+        for (let key in pos) {
+            this.arrows.push(new Arrow(pos[key], -80, key));
+        }
     }
 
-    #randomArrow(ctx) {
-        let rand = this.arrow[Math.floor(Math.random() * this.arrow.length)];
-        
+    #addRandomArrows() {
+        let randomIdx = Math.floor(Math.random() * this.arrows.length)
+        // let randomArrow = this.arrows[Math.floor(Math.random() * this.arrows.length)];
+        this.randomArrows.push(this.arrows[randomIdx]);
     }
 
     drawScore() {
 
     }
 
-    checkCollision() {
+    checkPosition() {
 
     }
 
