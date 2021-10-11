@@ -1,21 +1,38 @@
 body {
-    background-color: #f3e3f8;
-    font: 20px Nunito Sans, Arial, Sans-Serif;
-    font-weight: 200;
+  background-color: #b270d1;
+  font: 20px Nunito Sans, Arial, Sans-Serif;
+  font-weight: 200;
 }
 
 section {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: relative;
+  color: #ffffff;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(173, 46, 135, 0.5);
+}
+
+div {
+  background: none;
+}
+
+div a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+div a:hover {
+  color: #670da0;
+  
 }
 
 #game-canvas {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 2%;
+  display: block;
+  position: absolute;
+  background: url("../imgs/background.png");
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2%;
 }

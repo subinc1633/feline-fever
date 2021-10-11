@@ -4,6 +4,8 @@ export default class Controls {
         this.ctx = ctx;
         this.width = width;
         this.height = height;
+        this.lastTime = 0;
+        this.animate(0)
     }
 
     // KEYS = {
@@ -27,7 +29,7 @@ export default class Controls {
         this.ctx.clearRect(0, 0, this.width, this.height);
         let deltaTime = timeStamp - this.lastTime;
         this.lastTime = timeStamp;
-        this.game.update(deltaTime);
+        this.game.update(this.ctx);
         this.game.draw(this.ctx);
         requestAnimationFrame(this.animate.bind(this));
     }
