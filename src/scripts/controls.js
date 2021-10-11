@@ -6,23 +6,29 @@ export default class Controls {
         this.height = height;
     }
 
+    // KEYS = {
+    //     w: 
+    //     a:
+    //     s:
+    //     d:
+    // }
+
+    start() {
+        // this.keyBindings();
+        this.lastTime = 0;
+        requestAnimationFrame(this.animate.bind(this));
+    }
+    
     keyBindings() {
         
     }
 
     animate(timeStamp) {
-        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-        let prevTime = 0;
-        const diff = timeStamp - prevTime;
-        prevTime = timeStamp;
-        requestAnimationFrame(animate);
-    }
-
-    run() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+        let deltaTime = timeStamp - this.lastTime;
+        this.lastTime = timeStamp;
+        this.game.update(deltaTime);
         this.game.draw(this.ctx);
-    }
-
-    start() {
-        this.game.background(this.ctx);
+        requestAnimationFrame(this.animate.bind(this));
     }
 }

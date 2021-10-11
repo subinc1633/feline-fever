@@ -1,5 +1,5 @@
-import Game from "./scripts/game.js";
 import Controls from "./scripts/controls.js";
+import Game from "./scripts/game.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("game-canvas");
@@ -7,6 +7,5 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.height = 630;
     const ctx = canvas.getContext("2d");
     const game = new Game();
-    const controls = new Controls(game, ctx, canvas.width, canvas.height);
-    controls.run();
+    new Controls(game, ctx, canvas.width, canvas.height);
 });
