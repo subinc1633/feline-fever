@@ -2,9 +2,13 @@ import Avatar from "./avatar.js";
 import Arrow from "./arrow.js";
 import Song from "./song.js";
 
+const DEFAULT_DELTA_TIME = 1000/60;
+const varyingSpeeds = [
+    3,3,5
+]
+
 export default class Game {
     constructor() {
-        this.arrows = [];
         this.randomArrows = [];
         this.avatar = [];
         this.arrowInterval = 1500;
@@ -46,12 +50,20 @@ export default class Game {
         this.randomArrows.push(arrow);
     }
 
+    speedArrow(deltaTime) {
+        for (let arrow of this.randomArrows) {
+            const scale = deltaTime / DEFAULT_DELTA_TIME;
+            arrow.speed += varyingSpeeds * scale;
+        }
+    }
+
+
     drawScore() {
 
     }
 
     gameOver() {
-        clearInterval();
+        cancelAnimationFrame()
         // deal with favicon error
     }
 }

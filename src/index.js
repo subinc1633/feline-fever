@@ -12,5 +12,5 @@ document.addEventListener("DOMContentLoaded", () => {
     startButton.addEventListener("click", event => {
         canvas.style.display = "block";
         new Controls(game, ctx, canvas.width, canvas.height);
-    })
+    });
 });
