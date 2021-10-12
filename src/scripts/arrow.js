@@ -1,5 +1,5 @@
 const PROPERTIES = {
-    SPEED: 2
+    SPEED: 0.1
 };
 
 export default class Arrow { 
@@ -28,15 +28,12 @@ export default class Arrow {
         }
     }
 
-    move() {
+    move(deltaTime) {
         let leftRight = (this.dir === "left" || this.dir === "right");
         let upDown = (this.dir === "up" || this.dir === "down");
 
-        if (leftRight && this.y < 374 || upDown && this.y < 372) {
-            this.y += this.speed;
-        } else if (leftRight && this.y === 374 || upDown && this.y === 372) {
-            this.y = -70;
-            return this.deletion = true;
+        if (leftRight && this.y < 530 || upDown && this.y < 530) {
+            this.y += this.speed * deltaTime;
         }
     }
 }

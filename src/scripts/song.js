@@ -1,19 +1,10 @@
-const ELEMENTS = {
-    NUM_ARROWS: 20
-};
+const speed = {
+    0: 0.15,
+    1: 0.16
+}
 
 export default class Song {
-    constructor(game) {
-        this.game = game;
-        this.arrows = [];
-        this.num_arrows = ELEMENTS.NUM_ARROWS;
+    constructor() {
+        this.speed = speed;
     }
-
-    speed(deltaTime) {
-        for (let arrow of this.arrows) {
-            this.move(deltaTime);
-        }
-    }
-
-
 }

@@ -5,47 +5,50 @@ export default class Controls {
         this.width = width;
         this.height = height;
         this.prevTime = 0;
-        this.animate(0);
+    }
+
+    start() {
+        this.keyBindings();
         this.playAudio();
+        window.setTimeout(() => {
+            this.animate(0);
+        }, 1000);
     }
     
     keyBindings() {
         document.addEventListener("keydown" , event => {
+            if (["Space", "ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight"].indexOf(event.code) > -1) {
+                event.preventDefault();
+            }
+
             switch(event.code) {
                 case "KeyW":
                 case "ArrowUp":
-                    let upArrows = this.game.randomArrows.filter(arrow => arrow.image === upArrow);
-                    for (let arrow of upArrows) {
-                        arrow.image = upSelect;
-                    };
+                    this.pressKey("up");
                     break;
                 case "KeyA":
                 case "ArrowLeft":
-                    event.preventDefault();
-                    let leftArrows = this.game.randomArrows.filter(arrow => arrow.image === leftArrow);
-                    for (let arrow of leftArrows) {
-                        arrow.image = leftSelect;
-                    };
+                    this.pressKey("left");
                     break;
                 case "KeyS":
                 case "ArrowDown":
-                    event.preventDefault();
-                    let downArrows = this.game.randomArrows.filter(arrow => arrow.image === downArrow);
-                    debugger
-                    for (let arrow of downArrows) {
-                        arrow.image = downSelect;
-                    };
+                    this.pressKey("down");
                     break;
                 case "KeyD":
                 case "ArrowRight":
-                    event.preventDefault();
-                    let rightArrows = this.game.randomArrows.filter(arrow => arrow.image === rightArrow);
-                    for (let arrow of rightArrows) {
-                        arrow.image = rightSelect;
-                    };
+                    this.pressKey("right");
                     break;
             }
         });
+    }
+
+    pressKey(dir) {
+        let dirArrows = this.game.randomArrows.filter(arrow => arrow.dir === dir);
+        for (let arrow of dirArrows) {
+            if (arrow.y > 520 || this.game.pressArrow(arrow)) {
+                return arrow.deletion = true;
+            }
+        };
     }
 
     animate(timeStamp) {
@@ -54,22 +57,29 @@ export default class Controls {
         this.prevTime = timeStamp;
         this.game.update(deltaTime);
         this.game.draw(this.ctx);
+        this.drawScore();
         requestAnimationFrame(this.animate.bind(this));
     }
 
     playAudio() {
         const song = new Audio("wannabe.mp3");
         song.addEventListener("canplaythrough", event => {
-            window.setTimeout(() => {
-                song.play();
-            }, 1000);
+            song.play();
         });
         
         const muteButton = document.getElementById("mute");
-        console.log(muteButton)
         muteButton.addEventListener("click", event => {
             song.muted = !song.muted;
         });
-        // need option to mute audio
+    }
+
+    drawScore() {
+        const pos = {
+            x: 30,
+            y: 40
+        };
+        this.ctx.font = "bold 30px sans-serif";
+        this.ctx.fillStyle = "white";
+        this.ctx.fillText(this.game.score, pos.x, pos.y);
     }
 }
