@@ -6,6 +6,7 @@ export default class Controls {
         this.height = height;
         this.prevTime = 0;
         this.animate(0);
+        this.audio();
     }
 
     // KEYS = {
@@ -34,9 +35,17 @@ export default class Controls {
     }
 
     audio() {
-        const song = document.querySelector("song");
+        const song = new Audio("wannabe.mp3")
         song.addEventListener("canplaythrough", event => {
-            song.play();
+            window.setTimeout(() => {
+                song.play();
+            }, 1000);
         });
+
+        // need option to mute audio
+
+        song.addEventListener("ended", event => {
+            this.game.gameOver();
+        })
     }
 }

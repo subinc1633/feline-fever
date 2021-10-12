@@ -9,6 +9,7 @@ export default class Game {
         this.avatar = [];
         this.arrowInterval = 1500;
         this.arrowTimer = 0;
+        this.song = new Song(this);
         this.pos = {
             left: 255,
             up: 365,
@@ -37,29 +38,20 @@ export default class Game {
         
     }
 
-    // #addArrows() {
-        
-
-    //     // let randIdx = Math.floor(Math.random() * 4);
-    //     // let randPos = pos[randPos];
-    //     // let randDir = Array.from(Object.keys(pos))[randIdx];
-    //     for (let key in pos) {
-    //         let arrow = new Arrow(pos[key], -70, key);
-    //         this.arrows.push(arrow);
-    //     };
-    // }
-
     #addRandomArrows() {
         let randomIdx = Math.floor(Math.random() * 4);
         let randDir = Array.from(Object.keys(this.pos))[randomIdx]
         let randPos = this.pos[randDir];
         const arrow = new Arrow(randPos, -70, randDir);
         this.randomArrows.push(arrow);
-        // if (this.arrows[randomIdx] !== this.randomArrows[-1]) {
-        // this.randomArrows.push(this.arrows[randomIdx]);
     }
 
     drawScore() {
 
+    }
+
+    gameOver() {
+        clearInterval();
+        // deal with favicon error
     }
 }

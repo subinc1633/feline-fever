@@ -9,27 +9,18 @@ const ELEMENTS = {
 export default class Song {
     constructor(game) {
         this.game = game;
-        this.pos = {
-            left: 255,
-            up: 365,
-            down: 482,
-            right: 588
-        };
-        this.arrows = [];
+        this.arrows = this.game.randomArrows;
         this.vel = ELEMENTS.ARR_VEL;
         this.num_arrows = ELEMENTS.NUM_ARROWS;
     }
 
     newArrows() {
-        let randIdx = Math.floor(Math.random() * 4);
-        let randDir = Array.from(Object.keys(this.pos))[randIdx]
-        let randPos = this.pos[randPos];
-        const arrow = new Arrow(randPos, -70, randDir);
-        this.arrows.push(arrow);
+        this.arrows.push()
     }
 
     scroll(deltaTime) {
-        this.arrows = this.arrows.filter(arrow => !arrow.deletion);
-        
+        for (let arrow of this.arrows) {
+            arrow.move();
+        }
     }
 }
