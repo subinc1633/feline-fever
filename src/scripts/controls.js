@@ -34,26 +34,9 @@ export default class Controls {
     }
 
     audio() {
-        const AudioContext = window.AudioContext;
-        const audioContext = new AudioContext();
-        const audioElement = document.querySelector("audio");
-        const song = audioContext.createMediaElementSource(audioElement);
-        song.connect(gainNode);
-        gainNode.connect(audioContext.connect());
-        // window.setInterval(() => {
-        //     document.song
-        // });
-
-        if (song.isPlaying) {
-            song.pause();
-            isPlaying = false;
-        } else {
+        const song = document.querySelector("song");
+        song.addEventListener("canplaythrough", event => {
             song.play();
-            isPlaying = true;
-        }
-    }
-
-    toggleAudio() {
-        
+        });
     }
 }

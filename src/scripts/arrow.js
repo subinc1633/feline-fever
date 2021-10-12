@@ -1,12 +1,12 @@
 const PROPERTIES = {
-    VEL: 5
+    SPEED: 2
 };
 
 export default class Arrow { 
     constructor(x, y, dir) {
         this.x = x;
         this.y = y;
-        this.vel = PROPERTIES.VEL;
+        this.speed = PROPERTIES.SPEED;
         this.dir = dir;
         this.deletion = false;
         this.image = null;
@@ -28,13 +28,14 @@ export default class Arrow {
         }
     }
 
-    move(deltaTime) {
+    move() {
         let leftRight = (this.dir === "left" || this.dir === "right");
         let upDown = (this.dir === "up" || this.dir === "down");
 
         if (leftRight && this.y < 374 || upDown && this.y < 372) {
-            this.y += deltaTime;
+            this.y += this.speed;
         } else if (leftRight && this.y === 374 || upDown && this.y === 372) {
+            this.y = -70;
             return this.deletion = true;
         }
     }
