@@ -4,7 +4,7 @@ import Game from "./scripts/game.js";
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("game-canvas");
     canvas.width = 900;
-    canvas.height = 630;
+    canvas.height = 530;
     const ctx = canvas.getContext("2d");
     const game = new Game();
     new Controls(game, ctx, canvas.width, canvas.height);

@@ -8,8 +8,8 @@ export default class Arrow {
         this.y = y;
         this.vel = PROPERTIES.VEL;
         this.dir = dir;
-        this.url = "";
         this.deletion = false;
+        this.image = null;
     }
 
     draw(ctx) {
@@ -28,15 +28,14 @@ export default class Arrow {
         }
     }
 
-    move() {
+    move(deltaTime) {
         let leftRight = (this.dir === "left" || this.dir === "right");
         let upDown = (this.dir === "up" || this.dir === "down");
 
         if (leftRight && this.y < 374 || upDown && this.y < 372) {
-            this.y++;
+            this.y += deltaTime;
         } else if (leftRight && this.y === 374 || upDown && this.y === 372) {
-            this.y = -80;
-            this.deletion = true;
+            return this.deletion = true;
         }
     }
 }

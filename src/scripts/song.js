@@ -8,6 +8,7 @@ const ELEMENTS = {
 
 export default class Song {
     constructor(game) {
+        this.game = game;
         this.pos = {
             left: 255,
             up: 365,
@@ -21,8 +22,8 @@ export default class Song {
 
     newArrows() {
         let randIdx = Math.floor(Math.random() * 4);
-        let randPos = Array.from(Object.keys(this.pos))[randIdx]
-        let randDir = this.pos[randPos];
+        let randDir = Array.from(Object.keys(this.pos))[randIdx]
+        let randPos = this.pos[randPos];
         const arrow = new Arrow(randPos, -70, randDir);
         this.arrows.push(arrow);
     }

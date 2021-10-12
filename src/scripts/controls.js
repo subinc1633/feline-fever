@@ -26,15 +26,34 @@ export default class Controls {
 
     animate(timeStamp) {
         this.ctx.clearRect(0, 0, this.width, this.height);
-        let deltaTime = timeStamp - this.prevTime;
+        const deltaTime = timeStamp - this.prevTime;
         this.prevTime = timeStamp;
         this.game.update(deltaTime);
         this.game.draw(this.ctx);
         requestAnimationFrame(this.animate.bind(this));
     }
 
-    // audio() {
-    //     const AudioContext = window.AudioContext;
-    //     const audioContext = new AudioContext();
-    // }
+    audio() {
+        const AudioContext = window.AudioContext;
+        const audioContext = new AudioContext();
+        const audioElement = document.querySelector("audio");
+        const song = audioContext.createMediaElementSource(audioElement);
+        song.connect(gainNode);
+        gainNode.connect(audioContext.connect());
+        // window.setInterval(() => {
+        //     document.song
+        // });
+
+        if (song.isPlaying) {
+            song.pause();
+            isPlaying = false;
+        } else {
+            song.play();
+            isPlaying = true;
+        }
+    }
+
+    toggleAudio() {
+        
+    }
 }

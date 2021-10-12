@@ -7,19 +7,17 @@ export default class Game {
         this.arrows = [];
         this.randomArrows = [];
         this.avatar = [];
-        this.arrowInterval = 2000;
+        this.arrowInterval = 150;
         this.arrowTimer = 0;
-        this.#addArrow();
-        // debugger
+        this.#addArrows();
     }
 
     draw(ctx) {
-        for (let rand of this.randomArrows) { rand.draw(ctx) };
+        for (let arrow of this.randomArrows) { arrow.draw(ctx) };
     }
 
     update(deltaTime) {
         this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
-        console.log(this.randomArrows);
         if (this.arrowTimer > this.arrowInterval) {
             this.#addRandomArrows();
             this.arrowTimer = 0;
@@ -28,7 +26,7 @@ export default class Game {
             this.arrowTimer += deltaTime;
         }
         
-        for (let rand of this.randomArrows) { rand.move() };
+        for (let arrow of this.randomArrows) { arrow.move(deltaTime) };
         
     }
 
@@ -36,7 +34,7 @@ export default class Game {
         
     }
 
-    #addArrow() {
+    #addArrows() {
         let pos = {
             left: 255,
             up: 365,
@@ -44,24 +42,27 @@ export default class Game {
             right: 588
         }
 
+        // let randIdx = Math.floor(Math.random() * 4);
+        // let randPos = pos[randPos];
+        // let randDir = Array.from(Object.keys(pos))[randIdx];
         for (let key in pos) {
-            this.arrows.push(new Arrow(pos[key], -80, key));
-        }
+            let arrow = new Arrow(pos[key], -70, key);
+            this.arrows.push(arrow);
+        };
     }
 
     #addRandomArrows() {
-        let randomIdx = Math.floor(Math.random() * this.arrows.length)
-        // let randomArrow = this.arrows[Math.floor(Math.random() * this.arrows.length)];
-        this.randomArrows.push(this.arrows[randomIdx]);
+        let randomIdx = Math.floor(Math.random() * this.arrows.length);
+        if (this.arrows[randomIdx] !== this.randomArrows[-1]) {
+            this.randomArrows.push(this.arrows[randomIdx]);
+        }
     }
 
     drawScore() {
 
     }
 
-    checkPosition() {
+    play() {
 
     }
-
-    
 }
