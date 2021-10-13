@@ -1,3 +1,5 @@
+import Game from "./game";
+
 export default class Controls {
     constructor(game, ctx, width, height) {
         this.game = game;
@@ -5,14 +7,36 @@ export default class Controls {
         this.width = width;
         this.height = height;
         this.prevTime = 0;
+        if (this.game.gameOver()) {
+            this.restart();
+        }
     }
 
     start() {
+        this.playing = true;
         this.keyBindings();
         this.playAudio();
         window.setTimeout(() => {
             this.animate(0);
-        }, 1000);
+        }, 500);
+    }
+
+    restart() {
+        this.playing = false;
+        this.game.score = 0;
+        this.game = new Game(this.ctx);
+    }
+
+    playAgain() {
+        const divModal = document.getElementById("ending");
+        const h3 = divModal.appendChild("h3");
+        h3.style.color = "#b88cba";
+        h3.style.textTransform = "uppercase";
+        const playButton = divModal.appendChild("button");
+        playButton.style.width = "300px";
+        playButton.style.height = "50px";
+        playButton.fillStyle = "#ac72cd";
+        divModal.style.display = "absolute";
     }
     
     keyBindings() {
@@ -45,7 +69,7 @@ export default class Controls {
     pressKey(dir) {
         let dirArrows = this.game.randomArrows.filter(arrow => arrow.dir === dir);
         for (let arrow of dirArrows) {
-            if (arrow.y > 520 || this.game.pressArrow(arrow)) {
+            if (arrow.y > 500 || this.game.pressArrow(arrow)) {
                 return arrow.deletion = true;
             }
         };
@@ -58,14 +82,15 @@ export default class Controls {
         this.game.update(deltaTime);
         this.game.draw(this.ctx);
         this.drawScore();
-        requestAnimationFrame(this.animate.bind(this));
+        if (this.playing) {
+            requestAnimationFrame(this.animate.bind(this));
+        }
     }
 
     playAudio() {
-        const song = new Audio("wannabe.mp3");
-        song.addEventListener("canplaythrough", event => {
-            song.play();
-        });
+        // const song = new Audio("wannabe.mp3");
+        const song = document.getElementById("music");
+        song.play();
         
         const muteButton = document.getElementById("mute");
         muteButton.addEventListener("click", event => {
@@ -81,5 +106,11 @@ export default class Controls {
         this.ctx.font = "bold 30px sans-serif";
         this.ctx.fillStyle = "white";
         this.ctx.fillText(this.game.score, pos.x, pos.y);
+    }
+
+    ending() {
+        if (this.game.gameOver()) {
+            this.playAgain();
+        }
     }
 }

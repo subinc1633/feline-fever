@@ -7,24 +7,4 @@ export default class Grade {
     checkPos(num) {
         return Math.abs(this.gauge - this.arrow.y) <= num;
     }
-
-    purrfect() {
-        
-    }
-
-    clawsome() {
-        
-    }
-
-    furmidable() {
-        
-    }
-
-    pawful() {
-        
-    }
-
-    miss() {
-        
-    }
 }

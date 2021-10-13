@@ -1,12 +1,8 @@
-const PROPERTIES = {
-    SPEED: 0.1
-};
-
 export default class Arrow { 
     constructor(x, y, dir) {
         this.x = x;
         this.y = y;
-        this.speed = PROPERTIES.SPEED;
+        this.speed = 0.2511;
         this.dir = dir;
         this.deletion = false;
         this.image = null;

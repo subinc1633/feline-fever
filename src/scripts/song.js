@@ -1,10 +1,16 @@
-const speed = {
-    0: 0.15,
-    1: 0.16
-}
+// const SPEED = [
+//     0.95, 0.5,0.7
+// ];
 
-export default class Song {
-    constructor() {
-        this.speed = speed;
-    }
-}
+// const INTERVALS = [
+//     500, 500, 700
+// ]
+
+// export default class Song {
+//     constructor() {
+//         this.speed = SPEED;
+//         this.intervals = INTERVALS;
+//     }
+
+
+// }
