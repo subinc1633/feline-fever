@@ -1,30 +1,28 @@
-import Game from "./game";
-
 export default class Controls {
     constructor(game, ctx, width, height) {
         this.game = game;
         this.ctx = ctx;
         this.width = width;
         this.height = height;
+        this.song = document.getElementById("music");
+        this.gameOver = true;
         this.prevTime = 0;
-        if (this.game.gameOver()) {
-            this.restart();
-        }
     }
 
     start() {
-        this.playing = true;
+        this.gameOver = false;
         this.keyBindings();
         this.playAudio();
+        this.muteAudio();
         window.setTimeout(() => {
             this.animate(0);
         }, 500);
     }
 
     restart() {
-        this.playing = false;
         this.game.score = 0;
         this.game = new Game(this.ctx);
+        this.start();
     }
 
     playAgain() {
@@ -36,7 +34,11 @@ export default class Controls {
         playButton.style.width = "300px";
         playButton.style.height = "50px";
         playButton.fillStyle = "#ac72cd";
-        divModal.style.display = "absolute";
+        divModal.style.display = "block";
+
+        playButton.addEventListener("click", event => {
+            this.restart();
+        })
     }
     
     keyBindings() {
@@ -69,7 +71,7 @@ export default class Controls {
     pressKey(dir) {
         let dirArrows = this.game.randomArrows.filter(arrow => arrow.dir === dir);
         for (let arrow of dirArrows) {
-            if (arrow.y > 500 || this.game.pressArrow(arrow)) {
+            if (this.game.pressArrow(arrow)) {
                 return arrow.deletion = true;
             }
         };
@@ -82,19 +84,28 @@ export default class Controls {
         this.game.update(deltaTime);
         this.game.draw(this.ctx);
         this.drawScore();
-        if (this.playing) {
+        this.ending();
+        if (!this.gameOver) {
             requestAnimationFrame(this.animate.bind(this));
+        } else {
+            this.playAgain();
         }
     }
 
     playAudio() {
-        // const song = new Audio("wannabe.mp3");
-        const song = document.getElementById("music");
-        song.play();
-        
+        this.song.play();
+    }  
+
+    muteAudio() {
         const muteButton = document.getElementById("mute");
         muteButton.addEventListener("click", event => {
-            song.muted = !song.muted;
+            this.song.muted = !this.song.muted;
+        });
+    }
+
+    ending() {
+        this.song.addEventListener("ended", event => {
+            this.gameOver = true;
         });
     }
 
@@ -106,11 +117,5 @@ export default class Controls {
         this.ctx.font = "bold 30px sans-serif";
         this.ctx.fillStyle = "white";
         this.ctx.fillText(this.game.score, pos.x, pos.y);
-    }
-
-    ending() {
-        if (this.game.gameOver()) {
-            this.playAgain();
-        }
     }
 }

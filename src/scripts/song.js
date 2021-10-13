@@ -1,16 +1,116 @@
-// const SPEED = [
-//     0.95, 0.5,0.7
-// ];
+const opening = [
+    200, 600, 1000, 200, 300, 500, 200, 300, 500
+]
 
-// const INTERVALS = [
-//     500, 500, 700
-// ]
+const verse = [
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2},
+    {interval: 800, speed: 0.2}
 
-// export default class Song {
-//     constructor() {
-//         this.speed = SPEED;
-//         this.intervals = INTERVALS;
-//     }
+]
+
+export default class Song {
+    constructor() {
+        this.opening = opening;
+    }
 
 
-// }
+}

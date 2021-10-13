@@ -1,16 +1,16 @@
 // import Avatar from "./avatar.js";
 import Arrow from "./arrow.js";
 import Grade from "./grade.js";
-// import Song from "./song.js";
+import Song from "./song.js";
 
 export default class Game {
     constructor() {
         this.randomArrows = [];
         this.avatar = [];
-        this.arrowInterval = 950;
+        this.arrowInterval = 1000;
         this.arrowTimer = 0;
-        // this.speed = 1;
-        // this.song = new Song();
+        this.song = new Song();
+        this.lastTime = 0;
         this.score = 0;
         this.pos = {
             left: 255,
@@ -25,17 +25,23 @@ export default class Game {
     }
 
     update(deltaTime) {
-        this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
         if (this.arrowTimer > this.arrowInterval) {
             this.#addRandomArrows();
             this.arrowTimer = 0;
         } else {
             this.arrowTimer += deltaTime;
         }
-
-        // this.changeInterval(deltaTime);
         
-        for (let arrow of this.randomArrows) { arrow.move(deltaTime) };
+        for (let [idx, arrow] of this.randomArrows.entries()) {
+            this.arrowInterval = this.song.opening[idx];
+            arrow.move(deltaTime);
+            if (arrow.deletion) {
+                this.song.opening.shift();
+                this.randomArrows.shift();
+            }
+        };
+
+        // this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
     }
 
     // changeInterval(deltaTime) {
@@ -67,7 +73,6 @@ export default class Game {
         // check the y-position of the arrow and compare it to a standard (y = 373)
         // if the y-position of when the player hits the arrow is within the indicated range (num), 
             // display the respective grade ("purrfect", "pawful", etc.)
-        console.log(arrow.y)
         this.grade = new Grade(arrow);
         if (this.grade.checkPos(5)) {
             console.log("purrfect")
@@ -86,18 +91,5 @@ export default class Game {
         }
 
         return true;
-    }
-
-    gameOver() {
-        let over = false;
-        
-        let song = document.getElementById("music");
-        song.addEventListener("ended", event => {
-            console.log("hello")
-            over = true;
-        });
-
-        return over;
-        // deal with favicon error
     }
 }

@@ -55,6 +55,7 @@ div a:hover {
   background-color: #d5adec;
   border: 0px solid;
   letter-spacing: 5px;
+  cursor: pointer;
 }
 
 #loading #start {
