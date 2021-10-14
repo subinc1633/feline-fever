@@ -23,12 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
     closeButton.onclick = () => { modal.style.display = "none"; }
     window.onclick = (e) => { if (e.target === modal) { modal.style.display = "none" }};
 
-    
-
     const endButton = document.getElementById("play-again");
     endButton.addEventListener("click", event => {
         canvas.style.display = "block";
         ending.style.display = "none";
-        controls.restart();
+        controls.game = new Game();
+        controls.start();
     })
 });

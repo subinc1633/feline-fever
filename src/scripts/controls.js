@@ -1,4 +1,3 @@
-import Game from "./game.js";
 import Grade from "./grade.js";
 
 export default class Controls {
@@ -23,12 +22,6 @@ export default class Controls {
         if (this.gameOver) {
             clearTimeout(play);
         }
-    }
-
-    restart() {
-        this.game = new Game();
-        this.prevTime = Date.now();
-        this.start();
     }
 
     playAgain() {
