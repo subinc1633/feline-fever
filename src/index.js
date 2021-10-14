@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const endButton = document.getElementById("play-again");
     endButton.addEventListener("click", event => {
-        ending.style.display = "none";
         canvas.style.display = "block";
+        ending.style.display = "none";
         controls.restart();
     })
 });

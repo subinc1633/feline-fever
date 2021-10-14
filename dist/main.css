@@ -15,7 +15,7 @@ section {
   align-items: center;
   background-color: rgba(173, 46, 135, 0.5);
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
 }
 
 div {
@@ -31,7 +31,7 @@ div span, a {
 }
 
 div a:hover {
-  border-bottom: 1px dashed #ffffff;
+  border-bottom: 1px dashed rgba(107, 20, 81, 0.5);
 }
 
 #loading {
@@ -104,6 +104,8 @@ button:hover {
 
 #modal h3 {
   font-weight: 400;
+  line-height: 40px;
+  width: 400px;
 }
 
 #modal .content {
@@ -121,6 +123,7 @@ button:hover {
 }
 
 #modal button {
+  margin-top: 15px;
   width: 200px;
 }
 
@@ -140,12 +143,14 @@ img {
 
 #ending {
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
   width: 900px;
   height: 530px;
   background-color: #624668;
+  background: url("../imgs/empty-splash-background.png");
   color: #ffffff;
   top: 50%;
   left: 50%;
@@ -155,19 +160,18 @@ img {
 
 #ending h2 {
   font-size: 40px;
-}
-
-#ending button {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background: url("../imgs/banner.png") center left/98% no-repeat;
 }
 
 #ending p {
-  left: 43%;
-  position: absolute;
+  position: relative;
+  text-align: center;
   font-size: 40px;
+}
+
+#ending button {
+  position: relative;
+  width: 400px;
 }
 
 #mute {

@@ -16,7 +16,6 @@ export default class Controls {
         this.keyBindings();
         let play = setTimeout(() => {
             this.playAudio();
-            this.muteAudio();
             setTimeout(() => {
                 this.animate(0);
             }, 400);
@@ -45,24 +44,24 @@ export default class Controls {
         this.grade = new Grade(arrow);
 
         if (this.grade.checkPos(5)) {
-            const purrfect = document.getElementById("purrfect");
-            this.ctx.drawImage(purrfect, 5, 712);
+            this.drawScore("purrfect", 30, 50);
+            console.log("purrfect")
             this.game.score += 500;
         } else if (this.grade.checkPos(10)) {
-            const clawsome = document.getElementById("clawsome");
-            this.ctx.drawImage(clawsome, 5, 712);
+            this.drawScore("clawsome", 30, 50);
+            console.log("clawsome")
             this.game.score += 400;
         } else if (this.grade.checkPos(20)) {
-            const furmidable = document.getElementById("furmidable");
-            this.ctx.drawImage(furmidable, 5, 712);
+            this.drawScore("furmidable", 30, 50);
+            console.log("furmidable")
             this.game.score += 300;
         } else if (this.grade.checkPos(40)) {
-            const pawful = document.getElementById("pawful");
-            this.ctx.drawImage(pawful, 5, 712);
+            this.drawScore("pawful", 30, 50);
+            console.log("pawful")
             this.game.score += 200;
         } else {
-            const miss = document.getElementById("miss");
-            this.ctx.drawImage(miss, 5, 712);
+            this.drawScore("miss", 30, 50);
+            console.log("miss")
             return false;
         }
 
@@ -112,7 +111,7 @@ export default class Controls {
         this.prevTime = currentTime;
         this.game.update(deltaTime, this.ctx);
         this.game.draw(this.ctx);
-        this.drawScore();
+        this.drawScore(this.game.score, 30, 40);
         if (!this.gameOver) {
             requestAnimationFrame(this.animate.bind(this));
         }
@@ -124,28 +123,31 @@ export default class Controls {
             this.song.play();
         });
 
+        const muteButton = document.getElementById("mute");
+        muteButton.addEventListener("click", event => {
+            this.song.muted = !this.song.muted;
+        });
+
+        this.song.addEventListener("visibilitychange", event => {
+            console.log(document.visibilityState)
+            if (document.visibilityState === "hidden") {
+                this.song.pause();
+            } else {
+                this.song.play();
+            }
+        })
+
         this.song.addEventListener("ended", event => {
             this.gameOver = true;
             let canvas = document.getElementById("game-canvas");
             canvas.style.display = "none";
             this.playAgain();
         });
-    }  
-
-    muteAudio() {
-        const muteButton = document.getElementById("mute");
-        muteButton.addEventListener("click", event => {
-            this.song.muted = !this.song.muted;
-        });
     }
 
-    drawScore() {
-        const pos = {
-            x: 30,
-            y: 40
-        };
+    drawScore(text, x, y) {
         this.ctx.font = "bold 30px sans-serif";
         this.ctx.fillStyle = "white";
-        this.ctx.fillText(this.game.score, pos.x, pos.y);
+        this.ctx.fillText(text, x, y);
     }
 }

@@ -1,16 +1,13 @@
-// import Avatar from "./avatar.js";
 import Arrow from "./arrow.js";
 import Song from "./song.js";
 
 export default class Game {
     constructor() {
         this.randomArrows = [];
-        this.avatar = [];
         this.arrowInterval = 1000;
         this.arrowTimer = 0;
         this.song = new Song();
-        this.secondsong = new Song();
-        console.log(this.secondsong.beats)
+        this.beats = this.song.beats;
         this.score = 0;
         this.pos = {
             left: 255,
@@ -18,7 +15,6 @@ export default class Game {
             down: 482,
             right: 588
         }
-        this.beats = this.song.beats;
     }
 
     draw(ctx) {
@@ -40,10 +36,6 @@ export default class Game {
             arrow.move(ctx);
         };
     }
-
-    // #addAvatar() {
-        
-    // }
 
     #addRandomArrows() {
         let randomIdx = Math.floor(Math.random() * 4);
