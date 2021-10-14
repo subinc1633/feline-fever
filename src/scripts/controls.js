@@ -13,8 +13,10 @@ export default class Controls {
     start() {
         this.gameOver = false;
         this.keyBindings();
+        this.song = new Audio("wannabe.mp3");
         let play = setTimeout(() => {
             this.playAudio();
+            this.muteAudio();
             setTimeout(() => {
                 this.animate(0);
             }, 500);
@@ -111,16 +113,19 @@ export default class Controls {
             this.song.play();
         });
 
-        let muteButton = document.getElementById("mute");
-        muteButton.addEventListener("click", event => {
-            this.song.muted = !this.song.muted;
-        });
-
         this.song.addEventListener("ended", event => {
             this.gameOver = true;
             let canvas = document.getElementById("game-canvas");
             canvas.style.display = "none";
             this.playAgain();
+        });
+    }
+
+    muteAudio() {
+        let muteButton = document.getElementById("mute");
+        muteButton.addEventListener("click", event => {
+            this.song.muted = !this.song.muted;
+            console.log(this.song.muted)
         });
     }
 
