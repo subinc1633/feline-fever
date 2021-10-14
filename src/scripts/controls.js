@@ -4,19 +4,24 @@ export default class Controls {
         this.ctx = ctx;
         this.width = width;
         this.height = height;
-        this.song = document.getElementById("music");
-        this.gameOver = true;
-        this.prevTime = 0;
+        this.gameOver = false;
+        this.prevTime = Date.now();
     }
 
     start() {
         this.gameOver = false;
         this.keyBindings();
-        this.playAudio();
-        this.muteAudio();
-        window.setTimeout(() => {
-            this.animate(0);
+        let play = setTimeout(() => {
+            this.playAudio();
+            this.muteAudio();
+            setTimeout(() => {
+                this.animate(0);
+            }, 400);
         }, 500);
+        if (this.gameOver) {
+            clearTimeout(play);
+            this.restart();
+        }
     }
 
     restart() {
@@ -71,41 +76,42 @@ export default class Controls {
     pressKey(dir) {
         let dirArrows = this.game.randomArrows.filter(arrow => arrow.dir === dir);
         for (let arrow of dirArrows) {
-            if (this.game.pressArrow(arrow)) {
+            if (this.y > 500 || this.game.pressArrow(arrow)) {
                 return arrow.deletion = true;
             }
         };
     }
 
-    animate(timeStamp) {
+    animate() {
         this.ctx.clearRect(0, 0, this.width, this.height);
-        const deltaTime = timeStamp - this.prevTime;
-        this.prevTime = timeStamp;
+        let currentTime = Date.now();
+        const deltaTime = currentTime - this.prevTime;
+        this.prevTime = currentTime;
         this.game.update(deltaTime);
         this.game.draw(this.ctx);
         this.drawScore();
-        this.ending();
         if (!this.gameOver) {
             requestAnimationFrame(this.animate.bind(this));
         } else {
-            this.playAgain();
+            return;
         }
     }
 
     playAudio() {
-        this.song.play();
+        this.song = new Audio("wannabe.mp3");
+        this.song.addEventListener("canplaythrough", event => {
+            this.song.play();
+        }); 
+
+        this.song.addEventListener("ended", event => {
+            this.gameOver = true;
+        });
     }  
 
     muteAudio() {
         const muteButton = document.getElementById("mute");
         muteButton.addEventListener("click", event => {
             this.song.muted = !this.song.muted;
-        });
-    }
-
-    ending() {
-        this.song.addEventListener("ended", event => {
-            this.gameOver = true;
         });
     }
 

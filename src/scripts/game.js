@@ -10,7 +10,6 @@ export default class Game {
         this.arrowInterval = 1000;
         this.arrowTimer = 0;
         this.song = new Song();
-        this.lastTime = 0;
         this.score = 0;
         this.pos = {
             left: 255,
@@ -18,6 +17,7 @@ export default class Game {
             down: 482,
             right: 588
         }
+        this.beats = this.song.beats;
     }
 
     draw(ctx) {
@@ -25,37 +25,20 @@ export default class Game {
     }
 
     update(deltaTime) {
+        this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
+
         if (this.arrowTimer > this.arrowInterval) {
             this.#addRandomArrows();
+            this.arrowInterval = this.beats.shift();
             this.arrowTimer = 0;
         } else {
             this.arrowTimer += deltaTime;
         }
-        
+
         for (let [idx, arrow] of this.randomArrows.entries()) {
-            this.arrowInterval = this.song.opening[idx];
             arrow.move(deltaTime);
-            if (arrow.deletion) {
-                this.song.opening.shift();
-                this.randomArrows.shift();
-            }
         };
-
-        // this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
     }
-
-    // changeInterval(deltaTime) {
-    //     const time = deltaTime / CONSTANT_DELTA_TIME;
-        
-    //     for (let i = 0; i < this.song.intervals.length; i++) {
-    //         let speed = this.song.speed[i];
-    //         console.log(speed)
-    //         let interval = this.song.intervals[i];
-
-    //         this.arrowInterval = interval * time;
-    //         this.speed = speed;
-    //     }
-    // }
 
     // #addAvatar() {
         
@@ -63,17 +46,16 @@ export default class Game {
 
     #addRandomArrows() {
         let randomIdx = Math.floor(Math.random() * 4);
-        let randDir = Array.from(Object.keys(this.pos))[randomIdx]
+        let randDir = Array.from(Object.keys(this.pos))[randomIdx];
         let randPos = this.pos[randDir];
         const arrow = new Arrow(randPos, -70, randDir);
         this.randomArrows.push(arrow);
     }
 
     pressArrow(arrow) {
-        // check the y-position of the arrow and compare it to a standard (y = 373)
-        // if the y-position of when the player hits the arrow is within the indicated range (num), 
-            // display the respective grade ("purrfect", "pawful", etc.)
+        console.log(arrow.y)
         this.grade = new Grade(arrow);
+
         if (this.grade.checkPos(5)) {
             console.log("purrfect")
             this.score += 500;
@@ -88,6 +70,7 @@ export default class Game {
             this.score += 200;
         } else {
             console.log("miss")
+            return false;
         }
 
         return true;
