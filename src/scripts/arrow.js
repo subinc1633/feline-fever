@@ -10,19 +10,19 @@ export default class Arrow {
     draw(ctx) {
         if (this.dir === "left") {
             const leftArrow = new Image();
-            leftArrow.src = "../imgs/left-arrow.png";
+            leftArrow.src = "../../imgs/left-arrow.png";
             ctx.drawImage(leftArrow, this.x, this.y);
         } else if (this.dir === "up") {
             const upArrow = new Image();
-            upArrow.src = "../imgs/up-arrow.png";
+            upArrow.src = "../../imgs/up-arrow.png";
             ctx.drawImage(upArrow, this.x, this.y);
         } else if (this.dir === "down") {
             const downArrow = new Image();
-            downArrow.src = "../imgs/down-arrow.png";
+            downArrow.src = "../../imgs/down-arrow.png";
             ctx.drawImage(downArrow, this.x, this.y);
         } else if (this.dir === "right") {
             const rightArrow = new Image();
-            rightArrow.src = "../imgs/right-arrow.png";
+            rightArrow.src = "../../imgs/right-arrow.png";
             ctx.drawImage(rightArrow, this.x, this.y);
         }
     }
