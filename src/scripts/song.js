@@ -1,4 +1,4 @@
-const BEATS = [
+let beats = [
     200, 720, 1000, 200, 720, 950, 200, 720, 900,
     600, 300, 300, 200, 200, 200, 200, 720, 950, 200, 720, 950, 200, 1250,
     2500, 457, 457, 457, 457, 457, 457, 457, 457, 457, 457, 457, 457, 457, 457, 457,
@@ -13,7 +13,7 @@ const BEATS = [
 
 export default class Song {
     constructor() {
-        this.beats = BEATS;
+        this.beats = beats;
     }
 
 

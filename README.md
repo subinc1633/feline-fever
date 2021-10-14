@@ -8,9 +8,9 @@ Feline Fever is a rhythm game that involves pressing the respective arrows on th
 
 In Feline Fever, users will be able to:
 
-- Start, pause, and exit a game
+- Start a game
 - Press **arrow keys** or **WASD** to match the arrows on the screen
-- Select a background
+- Mute the music as needed
 
 In addition, this project will include:
 
@@ -37,18 +37,17 @@ This project will be implemented with:
 - Draw character, background, arrows and add respective classes
 
 **Mon | Day 4**
-- Set timing for collision detection between arrows
 - Set up grades and establish zones where the arrow's positioning 
 - Determine how many points to give for specific grades
 
 **Tue | Day 5**
-- Add character animation
 - Increment player's score
-- Implement background and add background animation
+- Implement background
 
 **Wed | Day 6**
 - CSS implementation, finishing any styling or editing any details
 
 ## Bonus Features
 
+- Add dancing character in the background
 - Unlock a new outfit with each level

@@ -1,6 +1,5 @@
 // import Avatar from "./avatar.js";
 import Arrow from "./arrow.js";
-import Grade from "./grade.js";
 import Song from "./song.js";
 
 export default class Game {
@@ -10,6 +9,8 @@ export default class Game {
         this.arrowInterval = 1000;
         this.arrowTimer = 0;
         this.song = new Song();
+        this.secondsong = new Song();
+        console.log(this.secondsong.beats)
         this.score = 0;
         this.pos = {
             left: 255,
@@ -24,7 +25,7 @@ export default class Game {
         for (let arrow of this.randomArrows) { arrow.draw(ctx) };
     }
 
-    update(deltaTime) {
+    update(deltaTime, ctx) {
         this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
 
         if (this.arrowTimer > this.arrowInterval) {
@@ -36,7 +37,7 @@ export default class Game {
         }
 
         for (let arrow of this.randomArrows) {
-            arrow.move(deltaTime);
+            arrow.move(ctx);
         };
     }
 
@@ -50,28 +51,5 @@ export default class Game {
         let randPos = this.pos[randDir];
         const arrow = new Arrow(randPos, -70, randDir);
         this.randomArrows.push(arrow);
-    }
-
-    pressArrow(arrow) {
-        this.grade = new Grade(arrow);
-
-        if (this.grade.checkPos(5)) {
-            console.log("purrfect")
-            this.score += 500;
-        } else if (this.grade.checkPos(10)) {
-            console.log("clawsome")
-            this.score += 400;
-        } else if (this.grade.checkPos(20)) {
-            console.log("furmidable")
-            this.score += 300;
-        } else if (this.grade.checkPos(40)) {
-            console.log("pawful")
-            this.score += 200;
-        } else {
-            console.log("miss")
-            return false;
-        }
-
-        return true;
     }
 }

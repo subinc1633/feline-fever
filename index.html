@@ -16,22 +16,35 @@
 
 <body>
     <section>
-    use arrow keys or WASD to tap
+    feline fever
     <div>
-        <a href="https://github.com/subinc1633">github</a> | <a href="#">linkedin</a>
+        <span>subin cho ⋄ </span><a href="https://github.com/subinc1633">github</a><span> ⋄ </span><a href="#">linkedin</a>
     </div>
     </section>
     <div id="loading">
         <button id="start">Start Game</button>
         <button id="directions">How to Play</button>
     </div>
-    <canvas id="game-canvas"></canvas>
     <div id="modal">
+        <div class="content">
+            <h3>how to play</h3>
+            <p>Use the <strong>arrow keys</strong> or <strong>WASD</strong> to press the game buttons.<br>
+            You may mute the music if you wish by clicking the music note on the <strong>top left</strong> of the screen.</p>
+            <br>
+            <h3>about</h3>
+            <p>Feline Fever is a rhythm game that involves pressing the respective arrows on the screen at the right time.<br>
+            To obtain points, the player must match the scrolling arrows with the stationary arrows at the center of the screen.</p>
+            <br>
+            <button id="ok">got it</button>
+        </div> 
+    </div>
+    <canvas id="game-canvas"></canvas>
+    <div id="ending">
         <div class="header">
-            <h4>Your Score:</h4>
-            <p></p>
+            <h2>Your Score:</h2><br><br>
         </div>
         <div class="body">
+            <p id="score"></p><br>
             <button id="play-again">Play Again</button>
         </div>
     </div>
@@ -40,6 +53,12 @@
     <img id="upArrow" src="./imgs/up-arrow.png">
     <img id="downArrow" src="./imgs/down-arrow.png">
     <img id="rightArrow" src="./imgs/right-arrow.png">
+    <img id="purrfect" src="./imgs/purrfect.png">
+    <img id="clawsome" src="./imgs/clawsome.png">
+    <img id="furmidable" src="./imgs/furmidable.png">
+    <img id="pawful" src="./imgs/pawful.png">
+    <img id="miss" src="./imgs/miss.png">
+
 </body>
 
 </html>

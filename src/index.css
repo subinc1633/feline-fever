@@ -11,16 +11,19 @@ section {
   justify-content: space-evenly;
   align-items: center;
   background-color: rgba(173, 46, 135, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 div {
   background: none;
 }
 
-div a {
+div span, a {
   color: #ffffff;
   text-decoration: none;
   font-size: 16px;
+  text-transform: lowercase;
   letter-spacing: 1px;
 }
 
@@ -32,6 +35,7 @@ div a:hover {
   width: 900px;
   height: 530px;
   background-color: #8134ae;
+  background: url("../imgs/splash-background.png");
   display: block;
   position: absolute;
   top: 50%;
@@ -40,18 +44,21 @@ div a:hover {
   border-radius: 2%;
 }
 
-#loading button {
+button {
   background-color: #ac72cd;
-  border: 0px solid;
+  border: 1px solid #d5adec;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.6s;
   font: 20px Nunito Sans, Arial, Sans-Serif;
   font-weight: 200;
+  color: #ebddf8;
+  letter-spacing: 1px;
+  text-transform: lowercase;
 }
 
-#loading button:hover {
-  background-color: #d5adec;
-  border: 0px solid;
+button:hover {
+  background-color: #bd9df7;
   letter-spacing: 5px;
+  color: #814b83;
   cursor: pointer;
 }
 
@@ -60,6 +67,7 @@ div a:hover {
   position: relative;
   margin-top: 190px;
   margin-bottom: 5px;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   width: 400px;
@@ -69,10 +77,48 @@ div a:hover {
 #loading #directions {
   display: block;
   position: relative;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   width: 400px;
   height: 70px;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px;
+  height: 400px;
+  z-index: 1;
+  border-radius: 5%;
+  background-color: #c8a5e9;
+  color:#61367a;
+  overflow: auto;
+}
+
+#modal h3 {
+  font-weight: 400;
+}
+
+#modal .content {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+#modal strong {
+  color:#852a69;
+  font-weight: 300;
+}
+
+#modal button {
+  width: 200px;
 }
 
 #game-canvas {
@@ -89,12 +135,14 @@ img {
   display: none;
 }
 
-#modal {
+#ending {
   display: none;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   width: 900px;
   height: 530px;
-  background-color: #3d3254;
+  background-color: #624668;
   color: #ffffff;
   top: 50%;
   left: 50%;
@@ -102,7 +150,25 @@ img {
   border-radius: 2%;
 }
 
-#modal button {
-  background-color:#c95da8;
-  text-transform: uppercase;
+#ending h2 {
+  font-size: 40px;
+}
+
+#ending button {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#ending p {
+  left: 43%;
+  position: absolute;
+  font-size: 40px;
+}
+
+#mute {
+  font-size: 30px;
+  background-color: #b270d1;
+  border: 0px solid;
 }

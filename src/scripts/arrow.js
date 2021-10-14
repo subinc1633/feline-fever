@@ -23,14 +23,15 @@ export default class Arrow {
         }
     }
 
-    move() {
+    move(ctx) {
         let leftRight = (this.dir === "left" || this.dir === "right");
         let upDown = (this.dir === "up" || this.dir === "down");
 
         if (leftRight && this.y < 530 || upDown && this.y < 530) {
             this.y += this.speed;
         } else {
-            console.log("miss");
+            const miss = document.getElementById("miss");
+            ctx.drawImage(miss, 5, 712);
             this.deletion = true;
         }
     }
