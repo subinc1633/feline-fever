@@ -1,9 +1,12 @@
+import Game from "./game.js";
+
 export default class Controls {
-    constructor(game, ctx, width, height) {
+    constructor(game, ctx, canvas, width, height) {
         this.game = game;
         this.ctx = ctx;
         this.width = width;
         this.height = height;
+        this.canvas = canvas;
         this.gameOver = false;
         this.prevTime = Date.now();
     }
@@ -20,30 +23,20 @@ export default class Controls {
         }, 500);
         if (this.gameOver) {
             clearTimeout(play);
-            this.restart();
         }
     }
 
     restart() {
         this.game.score = 0;
-        this.game = new Game(this.ctx);
+        this.game = new Game();
         this.start();
     }
 
     playAgain() {
-        const divModal = document.getElementById("ending");
-        const h3 = divModal.appendChild("h3");
-        h3.style.color = "#b88cba";
-        h3.style.textTransform = "uppercase";
-        const playButton = divModal.appendChild("button");
-        playButton.style.width = "300px";
-        playButton.style.height = "50px";
-        playButton.fillStyle = "#ac72cd";
+        const divModal = document.getElementById("modal");
         divModal.style.display = "block";
-
-        playButton.addEventListener("click", event => {
-            this.restart();
-        })
+        let p = document.getElementsByTagName("p");
+        p.innerText = `${this.game.score}`;
     }
     
     keyBindings() {
@@ -92,8 +85,6 @@ export default class Controls {
         this.drawScore();
         if (!this.gameOver) {
             requestAnimationFrame(this.animate.bind(this));
-        } else {
-            return;
         }
     }
 
@@ -101,10 +92,12 @@ export default class Controls {
         this.song = new Audio("wannabe.mp3");
         this.song.addEventListener("canplaythrough", event => {
             this.song.play();
-        }); 
+        });
 
         this.song.addEventListener("ended", event => {
             this.gameOver = true;
+            this.canvas.style.display = "none";
+            this.playAgain();
         });
     }  
 

@@ -53,7 +53,6 @@ export default class Game {
     }
 
     pressArrow(arrow) {
-        console.log(arrow.y)
         this.grade = new Grade(arrow);
 
         if (this.grade.checkPos(5)) {

@@ -9,9 +9,6 @@ export default class Arrow {
 
     draw(ctx) {
         if (this.dir === "left") {
-            // const leftArrow = new Image();
-            // leftArrow.src = "../../imgs/left-arrow.png";
-            // ctx.drawImage(leftArrow, this.x, this.y);
             const leftArrow = document.getElementById("leftArrow");
             ctx.drawImage(leftArrow, this.x, this.y);
         } else if (this.dir === "up") {
