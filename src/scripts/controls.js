@@ -1,3 +1,4 @@
+import Game from "./game.js";
 import Grade from "./grade.js";
 
 export default class Controls {
@@ -15,7 +16,6 @@ export default class Controls {
         this.keyBindings();
         let play = setTimeout(() => {
             this.playAudio();
-            this.muteAudio();
             setTimeout(() => {
                 this.animate(0);
             }, 500);
@@ -23,6 +23,13 @@ export default class Controls {
         if (this.gameOver) {
             clearTimeout(play);
         }
+    }
+
+    restart() {
+        this.game.score = 0;
+        this.game = new Game();
+        this.prevTime = Date.now();
+        this.start();
     }
 
     playAgain() {
@@ -38,19 +45,19 @@ export default class Controls {
         this.grade = new Grade(arrow);
 
         if (this.grade.checkPos(5)) {
-            this.drawScore("purrfect", 30, 50);
+            console.log("purrfect")
             this.game.score += 500;
         } else if (this.grade.checkPos(10)) {
-            this.drawScore("clawsome", 30, 50);
+            console.log("clawsome")
             this.game.score += 400;
         } else if (this.grade.checkPos(20)) {
-            this.drawScore("furmidable", 30, 50);
+            console.log("furmidable")
             this.game.score += 300;
         } else if (this.grade.checkPos(40)) {
-            this.drawScore("pawful", 30, 50);
+            console.log("pawful")
             this.game.score += 200;
         } else {
-            this.drawScore("miss", 30, 50);
+            console.log("miss")
             return false;
         }
 
@@ -112,18 +119,16 @@ export default class Controls {
             this.song.play();
         });
 
+        let muteButton = document.getElementById("mute");
+        muteButton.addEventListener("click", event => {
+            this.song.muted = !this.song.muted;
+        });
+
         this.song.addEventListener("ended", event => {
             this.gameOver = true;
             let canvas = document.getElementById("game-canvas");
             canvas.style.display = "none";
             this.playAgain();
-        });
-    }
-
-    muteAudio() {
-        let muteButton = document.getElementById("mute");
-        muteButton.addEventListener("click", event => {
-            this.song.muted = !this.song.muted;
         });
     }
 
