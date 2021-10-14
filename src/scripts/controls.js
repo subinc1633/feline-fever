@@ -45,23 +45,18 @@ export default class Controls {
 
         if (this.grade.checkPos(5)) {
             this.drawScore("purrfect", 30, 50);
-            console.log("purrfect")
             this.game.score += 500;
         } else if (this.grade.checkPos(10)) {
             this.drawScore("clawsome", 30, 50);
-            console.log("clawsome")
             this.game.score += 400;
         } else if (this.grade.checkPos(20)) {
             this.drawScore("furmidable", 30, 50);
-            console.log("furmidable")
             this.game.score += 300;
         } else if (this.grade.checkPos(40)) {
             this.drawScore("pawful", 30, 50);
-            console.log("pawful")
             this.game.score += 200;
         } else {
             this.drawScore("miss", 30, 50);
-            console.log("miss")
             return false;
         }
 
@@ -109,7 +104,7 @@ export default class Controls {
         let currentTime = Date.now();
         const deltaTime = currentTime - this.prevTime;
         this.prevTime = currentTime;
-        this.game.update(deltaTime, this.ctx);
+        this.game.update(deltaTime);
         this.game.draw(this.ctx);
         this.drawScore(this.game.score, 30, 40);
         if (!this.gameOver) {

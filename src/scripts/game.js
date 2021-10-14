@@ -21,7 +21,7 @@ export default class Game {
         for (let arrow of this.randomArrows) { arrow.draw(ctx) };
     }
 
-    update(deltaTime, ctx) {
+    update(deltaTime) {
         this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
 
         if (this.arrowTimer > this.arrowInterval) {
@@ -33,7 +33,7 @@ export default class Game {
         }
 
         for (let arrow of this.randomArrows) {
-            arrow.move(ctx);
+            arrow.move();
         };
     }
 
