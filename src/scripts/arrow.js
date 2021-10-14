@@ -9,33 +9,25 @@ export default class Arrow {
 
     draw(ctx) {
         if (this.dir === "left") {
-            // const leftArrow = new Image();
-            // leftArrow.src = "../imgs/left-arrow.png";
-            // ctx.drawImage(leftArrow, this.x, this.y);
-            this.image = leftArrow;
+            const leftArrow = new Image();
+            leftArrow.src = "../imgs/left-arrow.png";
             ctx.drawImage(leftArrow, this.x, this.y);
         } else if (this.dir === "up") {
-            // const upArrow = new Image();
-            // upArrow.src = "../imgs/up-arrow.png";
-            // ctx.drawImage(upArrow, this.x, this.y);
-            this.image = upArrow;
+            const upArrow = new Image();
+            upArrow.src = "../imgs/up-arrow.png";
             ctx.drawImage(upArrow, this.x, this.y);
         } else if (this.dir === "down") {
-            // const downArrow = new Image();
-            // downArrow.src = "../imgs/down-arrow.png";
-            // ctx.drawImage(downArrow, this.x, this.y);
-            this.image = downArrow;
+            const downArrow = new Image();
+            downArrow.src = "../imgs/down-arrow.png";
             ctx.drawImage(downArrow, this.x, this.y);
         } else if (this.dir === "right") {
-            // const rightArrow = new Image();
-            // rightArrow.src = "../imgs/right-arrow.png";
-            // ctx.drawImage(rightArrow, this.x, this.y);
-            this.image = rightArrow;
+            const rightArrow = new Image();
+            rightArrow.src = "../imgs/right-arrow.png";
             ctx.drawImage(rightArrow, this.x, this.y);
         }
     }
 
-    move(deltaTime) {
+    move() {
         let leftRight = (this.dir === "left" || this.dir === "right");
         let upDown = (this.dir === "up" || this.dir === "down");
 
