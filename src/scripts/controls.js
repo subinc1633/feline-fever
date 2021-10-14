@@ -18,7 +18,7 @@ export default class Controls {
             this.playAudio();
             setTimeout(() => {
                 this.animate(0);
-            }, 600);
+            }, 500);
         }, 500);
         if (this.gameOver) {
             clearTimeout(play);
@@ -118,19 +118,10 @@ export default class Controls {
             this.song.play();
         });
 
-        const muteButton = document.getElementById("mute");
+        let muteButton = document.getElementById("mute");
         muteButton.addEventListener("click", event => {
             this.song.muted = !this.song.muted;
         });
-
-        this.song.addEventListener("visibilitychange", event => {
-            console.log(document.visibilityState)
-            if (document.visibilityState === "hidden") {
-                this.song.pause();
-            } else {
-                this.song.play();
-            }
-        })
 
         this.song.addEventListener("ended", event => {
             this.gameOver = true;
