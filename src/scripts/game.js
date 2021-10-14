@@ -35,7 +35,7 @@ export default class Game {
             this.arrowTimer += deltaTime;
         }
 
-        for (let [idx, arrow] of this.randomArrows.entries()) {
+        for (let arrow of this.randomArrows) {
             arrow.move(deltaTime);
         };
     }
