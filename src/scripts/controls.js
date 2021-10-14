@@ -18,7 +18,7 @@ export default class Controls {
             this.playAudio();
             setTimeout(() => {
                 this.animate(0);
-            }, 500);
+            }, 600);
         }, 500);
         if (this.gameOver) {
             clearTimeout(play);
