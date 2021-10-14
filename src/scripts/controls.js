@@ -13,7 +13,6 @@ export default class Controls {
     start() {
         this.gameOver = false;
         this.keyBindings();
-        this.song = new Audio("wannabe.mp3");
         let play = setTimeout(() => {
             this.playAudio();
             this.muteAudio();
@@ -125,7 +124,6 @@ export default class Controls {
         let muteButton = document.getElementById("mute");
         muteButton.addEventListener("click", event => {
             this.song.muted = !this.song.muted;
-            console.log(this.song.muted)
         });
     }
 
