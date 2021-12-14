@@ -176,3 +176,7 @@ img {
   background-color: #b270d1;
   border: 0px solid;
 }
+
+#purrfect {
+  z-index: 2;
+}

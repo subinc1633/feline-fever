@@ -25,7 +25,7 @@ export default class Game {
         this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
 
         if (this.arrowTimer > this.arrowInterval) {
-            this.#addRandomArrows();
+            this.#addRandomArrows(deltaTime);
             this.arrowInterval = this.beats.shift();
             this.arrowTimer = 0;
         } else {
@@ -35,11 +35,11 @@ export default class Game {
         for (let arrow of this.randomArrows) { arrow.move(); };
     }
 
-    #addRandomArrows() {
+    #addRandomArrows(deltaTime) {
         let randomIdx = Math.floor(Math.random() * 4);
         let randDir = Array.from(Object.keys(this.pos))[randomIdx];
         let randPos = this.pos[randDir];
-        const arrow = new Arrow(randPos, -70, randDir);
+        const arrow = new Arrow(randPos, -70, randDir, deltaTime);
         this.randomArrows.push(arrow);
     }
 }

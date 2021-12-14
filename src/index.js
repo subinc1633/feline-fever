@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     endButton.addEventListener("click", event => {
         ending.style.display = "none";
         canvas.style.display = "block";
-        controls.restart();
+        let newGame = new Game();
+        let newControls = new Controls(newGame, ctx, canvas.width, canvas.height);
+        newControls.start();
     })
 });

@@ -1,5 +1,5 @@
-import Game from "./game.js";
-import Grade from "./grade.js";
+import Game from './game.js';
+import Grade from './grade.js';
 
 export default class Controls {
     constructor(game, ctx, width, height) {
@@ -12,13 +12,13 @@ export default class Controls {
     }
 
     start() {
-        this.gameOver = false;
+        this.running = true;
         this.keyBindings();
         let play = setTimeout(() => {
             this.playAudio();
             setTimeout(() => {
-                this.animate(0);
-            }, 500);
+                requestAnimationFrame(this.animate.bind(this));
+            }, 612);
         }, 500);
         if (this.gameOver) {
             clearTimeout(play);
@@ -26,38 +26,50 @@ export default class Controls {
     }
 
     restart() {
+        this.running = false;
         this.game.score = 0;
-        this.game = new Game();
         this.prevTime = Date.now();
-        this.start();
+        this.animate();
     }
 
     playAgain() {
-        const divLoad = document.getElementById("loading");
-        divLoad.style.display = "none";
-        const divEnd = document.getElementById("ending");
-        divEnd.style.display = "flex";
-        let p = document.getElementById("score");
+        const divLoad = document.getElementById('loading');
+        divLoad.style.display = 'none';
+        const divEnd = document.getElementById('ending');
+        divEnd.style.display = 'flex';
+        let p = document.getElementById('score');
         p.innerText = `${this.game.score}`;
+    }
+
+    centerImage(image, name, that) {
+        image.src = `../../imgs/${name}.png`;
+        let x = that.width / 2 - image.width / 2;
+        let y = that.height / 2 - image.height / 2;
+        return image.onload = () => {
+            that.ctx.drawImage(image, x, y);
+        };
     }
 
     pressArrow(arrow) {
         this.grade = new Grade(arrow);
+        let that = this;
 
         if (this.grade.checkPos(5)) {
-            console.log("purrfect")
+            // const purrfect = new Image();
+            // this.centerImage(purrfect, 'purrfect', that);
+            console.log('purrfect');
             this.game.score += 500;
         } else if (this.grade.checkPos(10)) {
-            console.log("clawsome")
+            console.log('clawsome')
             this.game.score += 400;
         } else if (this.grade.checkPos(20)) {
-            console.log("furmidable")
+            console.log('furmidable')
             this.game.score += 300;
         } else if (this.grade.checkPos(40)) {
-            console.log("pawful")
+            console.log('pawful')
             this.game.score += 200;
         } else {
-            console.log("miss")
+            console.log('miss')
             return false;
         }
 
@@ -65,27 +77,27 @@ export default class Controls {
     }
     
     keyBindings() {
-        document.addEventListener("keydown" , event => {
-            if (["Space", "ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight"].indexOf(event.code) > -1) {
+        document.addEventListener('keydown' , event => {
+            if (['Space', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight'].indexOf(event.code) > -1) {
                 event.preventDefault();
             }
 
             switch(event.code) {
-                case "KeyW":
-                case "ArrowUp":
-                    this.pressKey("up");
+                case 'KeyW':
+                case 'ArrowUp':
+                    this.pressKey('up');
                     break;
-                case "KeyA":
-                case "ArrowLeft":
-                    this.pressKey("left");
+                case 'KeyA':
+                case 'ArrowLeft':
+                    this.pressKey('left');
                     break;
-                case "KeyS":
-                case "ArrowDown":
-                    this.pressKey("down");
+                case 'KeyS':
+                case 'ArrowDown':
+                    this.pressKey('down');
                     break;
-                case "KeyD":
-                case "ArrowRight":
-                    this.pressKey("right");
+                case 'KeyD':
+                case 'ArrowRight':
+                    this.pressKey('right');
                     break;
             }
         });
@@ -114,27 +126,27 @@ export default class Controls {
     }
 
     playAudio() {
-        this.song = new Audio("wannabe.mp3");
-        this.song.addEventListener("canplaythrough", event => {
+        this.song = new Audio('wannabe.mp3');
+        this.song.addEventListener('canplaythrough', event => {
             this.song.play();
         });
 
-        let muteButton = document.getElementById("mute");
-        muteButton.addEventListener("click", event => {
+        let muteButton = document.getElementById('mute');
+        muteButton.addEventListener('click', event => {
             this.song.muted = !this.song.muted;
         });
 
-        this.song.addEventListener("ended", event => {
+        this.song.addEventListener('ended', event => {
             this.gameOver = true;
-            let canvas = document.getElementById("game-canvas");
-            canvas.style.display = "none";
+            let canvas = document.getElementById('game-canvas');
+            canvas.style.display = 'none';
             this.playAgain();
         });
     }
 
     drawScore(text, x, y) {
-        this.ctx.font = "bold 30px sans-serif";
-        this.ctx.fillStyle = "white";
+        this.ctx.font = 'bold 30px sans-serif';
+        this.ctx.fillStyle = 'white';
         this.ctx.fillText(text, x, y);
     }
 }
