@@ -1,4 +1,3 @@
-import Game from './game.js';
 import Grade from './grade.js';
 
 export default class Controls {
@@ -18,7 +17,7 @@ export default class Controls {
             this.playAudio();
             setTimeout(() => {
                 requestAnimationFrame(this.animate.bind(this));
-            }, 612);
+            }, 640);
         }, 500);
         if (this.gameOver) {
             clearTimeout(play);
@@ -45,9 +44,10 @@ export default class Controls {
         image.src = `../../imgs/${name}.png`;
         let x = that.width / 2 - image.width / 2;
         let y = that.height / 2 - image.height / 2;
-        return image.onload = () => {
-            that.ctx.drawImage(image, x, y);
-        };
+        image.id = `${name}`;
+        image.addEventListener('load', () => {
+            that.ctx.drawImage(image, 100, 100);
+        });
     }
 
     pressArrow(arrow) {
@@ -55,9 +55,9 @@ export default class Controls {
         let that = this;
 
         if (this.grade.checkPos(5)) {
-            // const purrfect = new Image();
-            // this.centerImage(purrfect, 'purrfect', that);
-            console.log('purrfect');
+            const purrfect = new Image();
+            this.centerImage(purrfect, 'purrfect', that);
+            // console.log('purrfect');
             this.game.score += 500;
         } else if (this.grade.checkPos(10)) {
             console.log('clawsome')

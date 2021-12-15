@@ -27,10 +27,6 @@ div span, a {
   letter-spacing: 1px;
 }
 
-div a:hover {
-  border-bottom: 1px dashed rgba(107, 20, 81, 0.5);
-}
-
 #loading {
   width: 900px;
   height: 530px;
@@ -134,7 +130,7 @@ button:hover {
   border-radius: 2%;
 }
 
-img {
+#leftArrow, #upArrow, #downArrow, #rightArrow {
   display: none;
 }
 
@@ -179,4 +175,8 @@ img {
 
 #purrfect {
   z-index: 2;
+}
+
+.github, .linkedin {
+  opacity: 0.5;
 }

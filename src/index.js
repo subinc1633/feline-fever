@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const howToPlay = document.getElementById("directions");
     const closeButton = document.getElementById("ok");
-    howToPlay.onclick = () => { modal.style.display = "block"; }
-    closeButton.onclick = () => { modal.style.display = "none"; }
+    howToPlay.onclick = () => { modal.style.display = "block"; };
+    closeButton.onclick = () => { modal.style.display = "none"; };
     window.onclick = (e) => { if (e.target === modal) { modal.style.display = "none" }};
 
     const endButton = document.getElementById("play-again");
