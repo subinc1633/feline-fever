@@ -180,6 +180,14 @@ button:hover {
   z-index: 2;
 }
 
+#links {
+  margin-top: 7px;
+}
+
+#links a:first-child {
+  padding-right: 20px;
+}
+
 .github, .linkedin {
   opacity: 0.5;
 }
