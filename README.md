@@ -52,25 +52,28 @@ constructor() {
     let randPos = this.pos[randDir];
     const arrow = new Arrow(randPos, -70, randDir, deltaTime);
     this.randomArrows.push(arrow);
-}```
+}
+```
 
 ### Moving Arrows
 
 To make the arrows fall, an arrow timer and an arrow interval were added to determine when the arrows would meet the bottom bar. The timer increments by deltaTime, which increases compatibility among devices with lower frame rates. If the timer exceeds the interval between arrows, the next arrow will render and be added to an array. Afterwards, the arrow interval will be set to a pre-determined time and the timer will restart at 0.
 
-```update(deltaTime) {
-        this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
+```
+update(deltaTime) {
+    this.randomArrows = this.randomArrows.filter(arrow => !arrow.deletion);
 
-        if (this.arrowTimer > this.arrowInterval) {
-            this.#addRandomArrows(deltaTime);
-            this.arrowInterval = this.beats.shift();
-            this.arrowTimer = 0;
-        } else {
-            this.arrowTimer += deltaTime;
-        }
+    if (this.arrowTimer > this.arrowInterval) {
+        this.#addRandomArrows(deltaTime);
+        this.arrowInterval = this.beats.shift();
+        this.arrowTimer = 0;
+    } else {
+        this.arrowTimer += deltaTime;
+    }
 
-        for (let arrow of this.randomArrows) { arrow.move(); };
-    }```
+    for (let arrow of this.randomArrows) { arrow.move(); };
+}
+```
 
 ## Implementation
 
