@@ -57,7 +57,7 @@ constructor() {
 
 ### Moving Arrows
 
-To make the arrows fall, an arrow timer and an arrow interval were added to determine when the arrows would meet the bottom bar. The timer increments by deltaTime, which increases compatibility among devices with lower frame rates. If the timer exceeds the interval between arrows, the next arrow will render and be added to an array. Afterwards, the arrow interval will be set to a pre-determined time and the timer will restart at 0.
+To make the arrows fall, an arrow timer and an arrow interval were added to determine when the arrows would meet the bottom bar. The timer increments by deltaTime, which increases compatibility among devices with lower frame rates. If the timer exceeds the interval between arrows, the next arrow will render and be added to an array. Afterwards, the arrow interval will be set to a predetermined duration and the timer will restart at 0.
 
 ```
 update(deltaTime) {
