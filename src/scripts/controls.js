@@ -58,22 +58,18 @@ export default class Controls {
             switch(event.code) {
                 case 'KeyW':
                 case 'ArrowUp':
-                    const up = new Image();
                     this.pressKey('up');
                     break;
                 case 'KeyA':
                 case 'ArrowLeft':
-                    const left = new Image();
                     this.pressKey('left');
                     break;
                 case 'KeyS':
                 case 'ArrowDown':
-                    const down = new Image();
                     this.pressKey('down');
                     break;
                 case 'KeyD':
                 case 'ArrowRight':
-                    const right = new Image();
                     this.pressKey('right');
                     break;
             }
