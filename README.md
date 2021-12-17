@@ -93,8 +93,8 @@ update(deltaTime) {
 **Wed | Day 6**
 - CSS implementation, finishing any styling or editing any details
 
-## Bonus Features
+## Future Features
 
 - Add accuracy grade pop-up
 - Add dancing character in the background
-- Unlock a new outfit with each level
+- Add an additional song to the game
