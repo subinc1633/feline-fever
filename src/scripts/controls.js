@@ -7,21 +7,20 @@ export default class Controls {
         this.width = width;
         this.height = height;
         this.gameOver = false;
-        this.prevTime = Date.now();
+        this.prevTime = 0;
+        this.fps = 1000 / 60;
     }
 
     start() {
         this.running = true;
+        let aniTimeout = null;
         this.keyBindings();
-        let play = setTimeout(() => {
-            this.playAudio();
-            setTimeout(() => {
-                requestAnimationFrame(this.animate.bind(this));
-            }, 640);
-        }, 500);
-        if (this.gameOver) {
-            clearTimeout(play);
-        }
+        this.playAudio();
+        setTimeout(() => {
+            aniTimeout = requestAnimationFrame(this.animate.bind(this));
+        }, 530);
+
+        if (this.gameOver) clearTimeout(aniTimeout);
     }
 
     restart() {
@@ -112,11 +111,10 @@ export default class Controls {
         };
     }
 
-    animate() {
+    animate(time) {
         this.ctx.clearRect(0, 0, this.width, this.height);
-        let currentTime = Date.now();
-        const deltaTime = currentTime - this.prevTime;
-        this.prevTime = currentTime;
+        let deltaTime = time - this.prevTime;
+        this.prevTime = time;
         this.game.update(deltaTime);
         this.game.draw(this.ctx);
         this.drawScore(this.game.score, 30, 40);

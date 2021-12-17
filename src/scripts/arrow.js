@@ -2,7 +2,7 @@ export default class Arrow {
     constructor(x, y, dir, dt) {
         this.x = x;
         this.y = y;
-        this.speed = 4.4;
+        this.speed = 0.25;
         this.dir = dir;
         this.deletion = false;
         this.dt = dt;
@@ -51,8 +51,9 @@ export default class Arrow {
         let upDown = (this.dir === 'up' || this.dir === 'down');
 
         if (leftRight && this.y < 530 || upDown && this.y < 530) {
-            // this.y += this.speed * this.dt;
-            this.y += this.speed;
+            this.y += this.speed * this.dt;
+            
+            // this.y += this.speed;
         } else {
             this.deletion = true;
         }
