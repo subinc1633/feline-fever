@@ -8,7 +8,6 @@ export default class Controls {
         this.height = height;
         this.gameOver = false;
         this.prevTime = 0;
-        this.fps = 1000 / 60;
     }
 
     start() {
@@ -56,7 +55,6 @@ export default class Controls {
         if (this.grade.checkPos(5)) {
             const purrfect = new Image();
             this.centerImage(purrfect, 'purrfect', that);
-            // console.log('purrfect');
             this.game.score += 500;
         } else if (this.grade.checkPos(10)) {
             console.log('clawsome')
