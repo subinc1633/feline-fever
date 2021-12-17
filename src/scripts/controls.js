@@ -17,7 +17,7 @@ export default class Controls {
         this.playAudio();
         setTimeout(() => {
             aniTimeout = requestAnimationFrame(this.animate.bind(this));
-        }, 530);
+        }, 550);
 
         if (this.gameOver) clearTimeout(aniTimeout);
     }
