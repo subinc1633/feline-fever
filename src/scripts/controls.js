@@ -22,13 +22,6 @@ export default class Controls {
         if (this.gameOver) clearTimeout(aniTimeout);
     }
 
-    restart() {
-        this.running = false;
-        this.game.score = 0;
-        this.prevTime = Date.now();
-        this.animate();
-    }
-
     playAgain() {
         const divLoad = document.getElementById('loading');
         divLoad.style.display = 'none';
@@ -38,35 +31,18 @@ export default class Controls {
         p.innerText = `${this.game.score}`;
     }
 
-    centerImage(image, name, that) {
-        image.src = `../../imgs/${name}.png`;
-        let x = that.width / 2 - image.width / 2;
-        let y = that.height / 2 - image.height / 2;
-        image.id = `${name}`;
-        image.addEventListener('load', () => {
-            that.ctx.drawImage(image, 100, 100);
-        });
-    }
-
     pressArrow(arrow) {
         this.grade = new Grade(arrow);
-        let that = this;
 
         if (this.grade.checkPos(5)) {
-            const purrfect = new Image();
-            this.centerImage(purrfect, 'purrfect', that);
             this.game.score += 500;
         } else if (this.grade.checkPos(10)) {
-            console.log('clawsome')
             this.game.score += 400;
         } else if (this.grade.checkPos(20)) {
-            console.log('furmidable')
             this.game.score += 300;
         } else if (this.grade.checkPos(40)) {
-            console.log('pawful')
             this.game.score += 200;
         } else {
-            console.log('miss')
             return false;
         }
 
@@ -82,18 +58,22 @@ export default class Controls {
             switch(event.code) {
                 case 'KeyW':
                 case 'ArrowUp':
+                    const up = new Image();
                     this.pressKey('up');
                     break;
                 case 'KeyA':
                 case 'ArrowLeft':
+                    const left = new Image();
                     this.pressKey('left');
                     break;
                 case 'KeyS':
                 case 'ArrowDown':
+                    const down = new Image();
                     this.pressKey('down');
                     break;
                 case 'KeyD':
                 case 'ArrowRight':
+                    const right = new Image();
                     this.pressKey('right');
                     break;
             }
